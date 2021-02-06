@@ -194,7 +194,7 @@ if __name__ == '__main__':
 				failed = 0
 			continue
 		else:
-			time.sleep(rand_time(5,6))
+			time.sleep(rand_time(6,7))
 			for w in chwd:
 				if w!=main_window:
 					browser.switch_to.window(w)
@@ -202,8 +202,12 @@ if __name__ == '__main__':
 			if len(subscribe_btn):
 				subscribe_btn[0].click()
 				time.sleep(rand_time(0,1))
+				while not len(browser.find_elements_by_xpath('//button[text()[contains(.,"Отправить сообщение")]]')):
+					time.sleep(.2)
 				browser.close()
 				time.sleep(rand_time(0,1))
+
+
 	
 			else:
 				browser.close()
